@@ -1,0 +1,47 @@
+# Autonomous Warehouse Robot using Deep Q-Learning
+
+**Authors**:  
+Ismot Sadik Peyas¹,², Zahid Hasan¹,², Md. Rafat Rahman Tushar¹,², Al Musabbir², Raisa Mehjabin Azni², Shahnewaz Siddique³  
+*Department of Electrical and Computer Engineering*  
+*North South University*  
+Dhaka, Bangladesh  
+
+**Emails**:  
+ismot.peyas@northsouth.edu, zahid.hasan04@northsouth.edu, rafat.tushar@northsouth.edu, al.musabbir@northsouth.edu, raisa.azni@northsouth.edu, shahnewaz.siddique@northsouth.edu
+
+## Abstract
+
+**Abstract—In warehouses, specialized agents need to navigate,avoid obstacles and maximize the use of space in the warehouse environment. Due to the unpredictability of these environments, reinforcement learning approaches can be applied to complete these tasks. In this paper, we propose using Deep Reinforcement Learning (DRL) to address the robot navigation and obstacle avoidance problem and traditional Q-learning with minor variations to maximize the use of space for product placement. We first investigate the problem for the single robot case. Next, based on the single robot model, we extend our system to the multi-robot case. We use a strategic variation of Q-tables to perform multi-agent Q-learning. We successfully test the performance of our model in a 2D simulation environment for both the single and multi-robot cases.
+
+Index Terms—Warehouse, Autonomous agent, Reinforcement learning, Multi-agent reinforcement learning, Deep Q-learning**
+
+
+## I. Introduction
+
+The global warehouse robotics market is predicted to grow at a CAGR (Compound Annual Growth Rate) of 14.0%, from USD (United States Dollar) 4.7 billion in 2021 to USD 9.1 billion by 2026 [1]. According to Dubois and Hamilton [2] the need for warehouse robots is growing, and is expected to expand. In 2017, these warehouse robots assisted in the picking and packing of goods worth USD 394.8 billion. 
+The impact of COVID-19 on the market resulted in a massive increase in demand for warehouse robots [1]. The pandemic’s supply chain disruption is impacting the market severely. Additionally, due to lockdown and travel restrictions, companies are not able to get the necessary workforce for their operations. Various warehouse operations, such as transportation, picking and placing, packaging, palletizing, and de-palletizing, are automated using warehouse robotics. The deployment of warehouse robots minimizes the need for human interaction and improves warehouse operations efficiency. Warehouse robots are used in a variety of fields such as online shopping, automotive, electrical, electronics, food and beverage, and pharmaceuticals to name a few. 
+For a sustainable supply chain system, these operations must be executed fast and efficiently. Both autonomous Unmanned Ground Vehicles (UGV) and Unmanned Aerial Vehicles (UAV) can be very efficient in such scenarios. Such warehouse agents can be utilized with autonomous  algorithms to conduct operations that are challenging for human operators at low operating costs. Warehouse operations involve receiving, shipping and storing. Stacking loaded pallets in warehouses and storage facilities are critical for preventing accidents. Poorly stacked loaded pallets pose a severe risk to employee safety and can cause significant product damage and increase the total cost of business. Also, in many cases maintaining the health and safety of a human workforce becomes costlier than maintaining a fleet of robots.
+
+The warehouse environment varies from place to place based on their construction and architectural design. Therefore, in many cases, a precise mathematical model of the underlying environment is unavailable or ambiguous. So, it is vital to build an efficient and accurate  model to address these complicated tasks without human interference. Moreover, the search environment can change unexpectedly, and the objects can be placed anywhere in the warehouse. Hence, the agent’s interaction with the environment should be autonomous, and the agent must have the capability to make decisions for itself.
+
+On such occasions, reinforcement learning (RL) [3] proposes a unique approach to solve these issues. RL does not require any prior knowledge of the environment. Agents based on RL algorithms can navigate the environment autonomously without any explicit model of the environment. Rather, the RL agent frequently interacts with the environment and receives negative or positive rewards based on a predefined reward function. Through this process, it learns  to function in an entirely new environment. Our agent function consists of three major components:  (1) autonomous navigation, (2) stacking products optimally, and (3) obstacle avoidance. The autonomous navigation and obstacle avoidance feature is based on Deep Q-learning. The agent has a set of forward, backward, left, and right actions to navigate and avoid collisions in the warehouse environment. The robot finds the maximum available space in the warehouse and then moves the product using the shortest path available to the destination point. The destination space is updated as soon as the product is place in the destination point (maximum available space). Discovering the maximum available space is implemented with the Q-learning algorithm.
+Our system is first developed for the single robot case. Later, a multi robot system is also developed to operate in the warehouse environment. In the multi-agent system, all agents aim to maximize their cumulative reward. When anagent collides with an obstacle or another agent, their reward is deducted by a certain amount.
+
+1 Equal Contribution.
+2 Undergraduate student.
+3 Assistant Professor, IEEE Member.
+
+## II. Related Work
+
+Reinforcement learning is not widely used in warehouse robotics research. In warehouse operations, path finding and obstacle avoidance are challenging. The most popular approaches employed in path computing to meet this difficulty are deterministic, heuristic-based algorithms [4]. [4] compares and contrasts static algorithms (such as A*), re-planning algorithms (such as D*), anytime algorithms (such as ARA*), and anytime re-planning algorithms (such as AD*). Classical algorithms generate path planning for known static environments. In path planning, states are agent locations and transitions between states are actions the agent  can do, each with a cost [4]. Later these are expanded and blended to work in a partially known or dynamic environment.
+
+A path planning algorithm is required for the mobile robot to operate autonomously throughout the warehouse [5]. For the mobile robot, this path planning algorithm generates a collision-free path from the start point to the goal point. The location of all the shelves and the open space must be known to the algorithm in order for it to complete this task. In our study, we have used Reinforcement learning, which  does not require this information. Once the algorithm has been given the start and destination points, it will evaluate all four nearby grids to  see if they are shelves or free space. In works such as [5] the closest euclidean distance between all nearby free space grids and the objective point is considered after identifying the neighboring free space grids, whereasour agent is reward driven. This process is  repeated until thedistance between the goal and the present point reaches zero. 
+
+Reinforcement learning algorithms have already been utilizedto develop algorithms for an autonomous aerial vehicle that can rescue missing people or livestock [6]. [6] used Deep Q learning for robot navigation. They used a cyclic approach of three tasks: Region Exploration, Target Search, and Target Selection. The DQN architecture explicitly separates the representation of state values and state-dependent action advantages via two separate streams.
+
+In [7], the authors developed and trained a Deep Reinforcement Learning (DRL) network to determine a series of local navigation actions for a mobile robot to execute. The onboard sensors on the robot provided the sensory data.The results showed that using the DRL method the robot could successfully navigate in an environment towards the target goal location when the rough terrain is unknown.
+
+A system for fast autonomy on a quadrotor platform showed its capabilities and robustness in high-speed navigation tasks [8]. As the speed rises, state estimation, planning, and control difficulties increase significantly. These issues are rectified based on the existing methods and demonstrate the whole system in various environments [8]. To avoid the obstacle, our model uses the deep learning method and object detection is crucial.
+
+[9] presents a review of deep learning-based objec detection frameworks. It initially focuses on typical generic  object detection architectures and some modifications and valuable tricks to improve detection performance. As distinct particular detection tasks show various characteristics, [9] briefly survey numerous specific tasks, including salient object detection, face detection, and pedestrian detection. Experimental studies are also given to distinguish various methods. Finally, some promising directions and tasks are provided to serve as guidelines for future work in both object detection and relevant neural network-based learning systems.
+
